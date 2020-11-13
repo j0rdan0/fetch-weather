@@ -73,11 +73,11 @@ func (w *Weather) SetWeather() {
 	json.NewDecoder(resp.Body).Decode(&c)
 
 	w.WeatherText = c[0].WeatherText
-	w.Temperature.Metric.Value = c[0].Temperature.Metric.Value
+	w.Temperature.Metric.Value = math.Round(c[0].Temperature.Metric.Value)
 }
 
 func (w *Weather) GetWeather() (temperature float64, description string) {
-	return math.Round(w.Temperature.Metric.Value), w.WeatherText
+	return w.Temperature.Metric.Value, w.WeatherText
 }
 
 func (w *Weather) Init() {

@@ -16,6 +16,7 @@ func main() {
 }
 
 func displayWeather(w *weather.Weather) {
+	degree := '°'
 	city, country := w.GetLocationDetails()
 	temp, description := w.GetWeather()
 	color.Set(color.FgBlue)
@@ -37,7 +38,7 @@ func displayWeather(w *weather.Weather) {
 	color.Set(color.FgRed)
 	fmt.Printf("Temperature:     ")
 	color.Unset()
-	fmt.Printf("%f C\n", temp)
+	fmt.Printf("%d %cC\n", int(temp), degree)
 
 	color.Set(color.FgRed)
 	fmt.Printf("Description:     ")
